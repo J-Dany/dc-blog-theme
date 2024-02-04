@@ -1,0 +1,39 @@
+<div class="color-mode-switch">
+    <div class="toggle">
+        <div class="active-circle"></div>
+        <div class="dark-mode">
+            <i class="bi bi-moon"></i>
+        </div>
+        <div class="light-mode">
+            <i class="bi bi-emoji-sunglasses"></i>
+        </div>
+    </div>
+</div>
+
+<script>
+    const activeCircle = document.querySelector('.active-circle');
+    const toggle = document.querySelector('.toggle');
+    const theme = localStorage.getItem('theme');
+
+    const prevValue = activeCircle.style.transition;
+    activeCircle.style.transition = 'none';
+    if (theme === 'dark') {
+        activeCircle.style.left = null;
+    } else {
+        activeCircle.style.left = '30px';
+    }
+    (() => activeCircle.scrollTop)();
+    activeCircle.style.transition = prevValue;
+
+    toggle.addEventListener('click', () => {
+        if (htmlEl.getAttribute('data-theme') === 'dark') {
+            htmlEl.setAttribute('data-theme', 'light');
+            activeCircle.style.left = '30px';
+            localStorage.setItem('theme', 'light');
+        } else {
+            htmlEl.setAttribute('data-theme', 'dark');
+            activeCircle.style.left = null;
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
