@@ -13,13 +13,12 @@
     </div>
     <hr />
     <div class="legal">
-        {{#get "posts" filter="slug:privacy-policy" as |privacyPolicy|}}
+        {{#get "pages" filter="slug:privacy-policy" as |privacyPolicy|}}
             {{#if privacyPolicy}}
                 <a href="{{privacyPolicy.[0].url}}">Privacy</a>
             {{/if}}
         {{/get}}
-        {{#get "posts" filter="slug:cookie-policy" as |cookiePolicy|}}
-            <span>|</span>
+        {{#get "pages" filter="slug:cookie-policy" as |cookiePolicy|}}
             {{#if cookiePolicy}}
                 <a href="{{cookiePolicy.[0].url}}">Cookie</a>
             {{/if}}
