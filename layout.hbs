@@ -24,7 +24,7 @@
         localStorage.setItem('theme', htmlEl.getAttribute('data-theme') ?? 'dark');
       }
     </script>
-    <img src="{{asset "images/left.svg"}}" alt="" class="bg bg-left">
+    <img loading="lazy" src="{{asset "images/left.svg"}}" alt="" class="bg bg-left">
     <main>
       {{> "color_mode_switch"}}
       {{{ body }}}
