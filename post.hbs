@@ -21,8 +21,15 @@
             </div>
         {{/if}}
         <div class="article-info">
-            <i class="bi bi-calendar"></i>
-            <p>{{date format="DD MMMM YYYY"}}</p>
+            <div class="date">
+                <i class="bi bi-calendar"></i>
+                <p>{{date format="DD MMMM YYYY"}}</p>
+            </div>
+            <div class="tags">
+                {{#primary_tag}}
+                    <div class="tag"><span>{{name}}</span></div>
+                {{/primary_tag}}
+            </div>
         </div>
         <div class="content">
             <h1>{{title}}</h1>
