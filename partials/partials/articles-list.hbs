@@ -10,17 +10,7 @@
                 <i class="bi bi-arrow-up-short"></i>
             </div>
         </a>
-        <div class="article-info">
-            <div class="date">
-                <i class="bi bi-calendar"></i>
-                <p>{{date format="DD MMMM YYYY"}}</p>
-            </div>
-            <div class="tags">
-                {{#primary_tag}}
-                    <div class="tag">{{name}}</div>
-                {{/primary_tag}}
-            </div>
-        </div>
+        {{> "partials/article-info"}}
         <h4><a href="{{url}}">{{title}}</a></h4>
         <p>{{excerpt words="30"}}</p>
     </div>

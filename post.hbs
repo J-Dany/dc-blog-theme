@@ -1,5 +1,7 @@
 {{!< layout}}
 
+<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+
 <article class="post">
     <a href="/" class="back">
         <i class="bi bi-arrow-left-short"></i>
@@ -20,17 +22,7 @@
                 />
             </div>
         {{/if}}
-        <div class="article-info">
-            <div class="date">
-                <i class="bi bi-calendar"></i>
-                <p>{{date format="DD MMMM YYYY"}}</p>
-            </div>
-            <div class="tags">
-                {{#primary_tag}}
-                    <div class="tag"><span>{{name}}</span></div>
-                {{/primary_tag}}
-            </div>
-        </div>
+        {{> "partials/article-info" }}
         <div class="content">
             <h1>{{title}}</h1>
             {{{content}}}

@@ -30,6 +30,22 @@
       {{{ body }}}
     </main>
     {{> "footer"}}
+    {{#is "post"}}
+    <script>
+      const progressBar = document.querySelector('.reading-progress');
+
+      function updateProgress() {
+        const totalHeight = document.body.clientHeight;
+        const windowHeight = document.documentElement.clientHeight;
+        const position = window.scrollY;
+        const progress = position / (totalHeight - windowHeight) * 100;
+        progressBar.setAttribute('value', progress);
+        requestAnimationFrame(updateProgress);
+      }
+
+      requestAnimationFrame(updateProgress);
+    </script>
+    {{/is}}
     {{ghost_foot}}
   </body>
 </head>

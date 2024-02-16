@@ -2,7 +2,7 @@
 
 <section class="page-content">
     {{#post}}
-        {{#if feature_image}}
+        {{#match @page.show_title_and_feature_image}}
             <div class="image">
                 <img
                     srcset="{{img_url feature_image size="s"}} 300w,
@@ -14,7 +14,7 @@
                     alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
                 />
             </div>
-        {{/if}}
+        {{/match}}
         <h1>{{title}}</h1>
         {{{content}}}
     {{/post}}

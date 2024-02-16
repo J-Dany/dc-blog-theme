@@ -1,0 +1,17 @@
+<div class="article-info">
+    <div class="date">
+        <i class="bi bi-calendar"></i>
+        <p>{{date format="DD MMMM YYYY"}}</p>
+    </div>
+    <i class="bi bi-dot"></i>
+    <div class="reading-time">
+        <i class="bi bi-clock"></i>
+        <p>{{reading_time minute="1 minuto" minutes="% minuti"}}</p>
+    </div>
+    <div class="flex-grow"></div>
+    <div class="tags">
+        {{#primary_tag}}
+            <div class="tag"><span>{{name}}</span></div>
+        {{/primary_tag}}
+    </div>
+</div>
