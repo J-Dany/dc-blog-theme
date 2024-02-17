@@ -1,0 +1,9 @@
+<script>
+    const htmlEl = document.querySelector('html');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        htmlEl.setAttribute('data-theme', currentTheme);
+    } else {
+        localStorage.setItem('theme', htmlEl.getAttribute('data-theme') ?? 'dark');
+    }
+</script>
