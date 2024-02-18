@@ -1,11 +1,11 @@
 {{#if this.excludeId }}
-    {{#get "posts" filter="id:-{{this.excludeId}}+tag:-'not-visible'" include="tags" limit="5" order="published_at desc"}}
+    {{#get "posts" filter="id:-{{this.excludeId}}+tag:-'#not-visible'" include="tags" limit="5" order="published_at desc"}}
         {{#if posts}}
             {{> "partials/articles-section"}}
         {{/if}}
     {{/get}}
 {{else}}
-    {{#get "posts" filter="tag:-'not-visible'" include="tags" limit="5" order="published_at desc"}}
+    {{#get "posts" filter="tag:-'#not-visible'" include="tags" limit="5" order="published_at desc"}}
         {{#if posts}}
             {{> "partials/articles-section"}}
         {{/if}}
