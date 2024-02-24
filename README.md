@@ -29,15 +29,5 @@ Questi invece all'interno del footer:
   hljs.addPlugin(new CopyButtonPlugin());
   hljs.highlightAll();
   hljs.initLineNumbersOnLoad();
-
-  document
-    .querySelectorAll("div.content h1, div.content h2, div.content h3, div.content h4")
-    .forEach((el) => {
-      if (el.id) {
-        el.addEventListener("click", () => {
-          window.location.hash = el.id;
-        });
-      }
-    });
 </script>
 ```
