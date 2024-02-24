@@ -14,6 +14,7 @@
     const activeCircle = document.querySelector('.active-circle');
     const toggle = document.querySelector('.toggle');
     const theme = localStorage.getItem('theme');
+    let commentsIframe = document.getElementById("ghost-comments-root")?.querySelector("iframe");
 
     const prevValue = activeCircle.style.transition;
     activeCircle.style.transition = 'none';
@@ -35,5 +36,20 @@
             activeCircle.style.left = null;
             localStorage.setItem('theme', 'dark');
         }
+
+        refreshCommentsIframe();
+
+        if (commentsIframe) {
+            const section = commentsIframe.contentWindow.document.querySelector("section");
+
+            if (section.classList.contains("ghost-display")) {
+                section.classList.remove("dark", "light");
+                section.classList.add(localStorage.getItem('theme'));
+            }
+        }
     });
+
+    function refreshCommentsIframe() {
+        commentsIframe = document.getElementById("ghost-comments-root")?.querySelector("iframe");
+    }
 </script>
