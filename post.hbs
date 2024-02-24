@@ -27,6 +27,11 @@
             <h1>{{title}}</h1>
             {{{content}}}
         </div>
+        {{#if comments}}
+            <section class="article-comments">
+                {{comments title="Commenti" saturation=80}}
+            </section>
+        {{/if}}
     {{/post}}
 </article>
 
