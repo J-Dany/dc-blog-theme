@@ -1,0 +1,19 @@
+{{!< layout}}
+
+<main id="tag-page">
+    <a href="/" class="back">
+        <i class="bi bi-arrow-left-short"></i>
+        <p>Home</p>
+    </a>
+    <section class="tag-header">
+        {{#tag}}
+            <h1>{{name}}</h1>
+            <p>{{description}}</p>
+        {{/tag}}
+    </section>
+    <section class="latest-articles">
+        {{#foreach posts}}
+            {{> "partials/article-card"}}
+        {{/foreach}}
+    </section>
+</main>
