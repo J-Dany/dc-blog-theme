@@ -2,24 +2,19 @@
 
 <progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
 
-<article class="post">
-    <a href="/" class="back">
-        <i class="bi bi-arrow-left-short"></i>
-        <p>Home</p>
-    </a>
-    {{#post}}
+{{#post}}
+    <article class="post">
+        <a href="/" class="back">
+            <i class="bi bi-arrow-left-short"></i>
+            <p>Home</p>
+        </a>
         {{#if feature_image}}
             <div class="image">
-                <img
-                    srcset="{{img_url feature_image size="s"}} 300w,
-                            {{img_url feature_image size="m"}} 600w,
-                            {{img_url feature_image size="l"}} 1000w,
-                            {{img_url feature_image size="xl"}} 2000w"
-                    sizes="(min-width: 1400px) 1400px, 92vw"
-                    src="{{img_url feature_image size="xl"}}"
-                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                    class="{{#has tag="#contain-image"}}img-contain{{/has}}"
-                />
+                <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
+                    feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
+                    sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size=" xl"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="{{#has tag="
+                    #contain-image"}}img-contain{{/has}}" />
             </div>
         {{/if}}
         {{> "partials/article-info" }}
@@ -28,13 +23,10 @@
             {{{content}}}
         </div>
         {{#if comments}}
-            <section class="article-comments">
-                {{comments title="Commenti" saturation=80}}
-            </section>
+        <section class="article-comments">
+            {{comments title="Commenti" saturation=80}}
+        </section>
         {{/if}}
-    {{/post}}
-</article>
-
-{{#post}}
-    {{> "latest-articles" excludeId="{{id}}"}}
+    </article>
+    {{> "latest-articles" excludeId=id }}
 {{/post}}

@@ -1,5 +1,5 @@
 {{#if this.excludeId }}
-    {{#get "posts" filter="id:-{{this.excludeId}}+tags:-['hash-not-visible']" include="tags" limit="10" order="published_at desc"}}
+    {{#get "posts" filter=(concat "id:-" this.excludeId "+tags:-['hash-not-visible']") include="tags" limit="10" order="published_at desc"}}
         {{#if posts}}
             {{> "partials/articles-section"}}
         {{/if}}
