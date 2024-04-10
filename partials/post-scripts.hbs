@@ -21,3 +21,18 @@
         }
     });
 </script>
+<script type="module">
+    import slugify from "/assets/js/slugify.js";
+
+    const allH4 = document.querySelectorAll('#article-content h4');
+    allH4.forEach((h4) => {
+        const id = h4.id;
+        const slugifiedContent = slugify(h4.textContent);
+
+        if (!id) {
+            h4.id = slugifiedContent;
+        } else if (id !== slugifiedContent) {
+            h4.id = slugifiedContent;
+        }
+    });
+</script>
