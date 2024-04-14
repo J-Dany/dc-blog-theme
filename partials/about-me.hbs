@@ -1,8 +1,10 @@
-<section class="about-me">
-    <h3>Su di me</h3>
+<section class="mt-7 about-me p-5 shadow-card3 rounded-lg dark:bg-gray-800">
+    <h3 class="text-xl font-medium">Su di me</h3>
     {{#get "posts" slug="about-me" as |post|}}
-        {{#post}}
-            {{{content}}}
-        {{/post}}
+        <div class="opacity-80">
+            {{#post}}
+                {{{content}}}
+            {{/post}}
+        </div>
     {{/get}}
 </section>

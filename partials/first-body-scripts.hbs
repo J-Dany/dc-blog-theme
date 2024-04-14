@@ -1,9 +1,12 @@
 <script>
-    const htmlEl = document.querySelector('html');
+    const htmlEl = document.documentElement;
     const currentTheme = localStorage.getItem('theme');
+    htmlEl.classList.remove('dark', 'light');
     if (currentTheme) {
+        htmlEl.classList.add(currentTheme);
         htmlEl.setAttribute('data-theme', currentTheme);
     } else {
         localStorage.setItem('theme', htmlEl.getAttribute('data-theme') ?? 'dark');
+        htmlEl.classList.add(htmlEl.getAttribute('data-theme') ?? 'dark');
     }
 </script>

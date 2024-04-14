@@ -1,10 +1,10 @@
-<div class="color-mode-switch">
-    <div class="toggle">
-        <div class="active-circle"></div>
-        <div class="dark-mode">
+<div class="color-mode-switch flex">
+    <div class="toggle dark:bg-gray-700 bg-gray-400 relative flex items-center w-toggleMode h-toggleMode rounded-toggleMode">
+        <div class="active-circle dark:bg-gray-500 bg-gray-300 transition-left absolute rounded-full top-0 left-0 h-activeMode w-activeMode"></div>
+        <div class="dark-mode z-10 shrink-0 w-mode text-center hover:cursor-pointer" style="padding-left: 1px;">
             <i class="bi bi-moon"></i>
         </div>
-        <div class="light-mode">
+        <div class="light-mode z-10 shrink-0 w-mode text-center hover:cursor-pointer" style="padding-left: 1px;">
             <i class="bi bi-emoji-sunglasses"></i>
         </div>
     </div>
@@ -27,11 +27,17 @@
     activeCircle.style.transition = prevValue;
 
     toggle.addEventListener('click', () => {
+        htmlEl.classList.remove("dark", "light");
+
         if (htmlEl.getAttribute('data-theme') === 'dark') {
+            htmlEl.classList.remove("dark");
+            htmlEl.classList.add("light");
             htmlEl.setAttribute('data-theme', 'light');
             activeCircle.style.left = '30px';
             localStorage.setItem('theme', 'light');
         } else {
+            htmlEl.classList.add("dark");
+            htmlEl.classList.remove("light");
             htmlEl.setAttribute('data-theme', 'dark');
             activeCircle.style.left = null;
             localStorage.setItem('theme', 'dark');

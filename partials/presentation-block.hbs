@@ -1,10 +1,10 @@
-<section class="presentation-block">
-    <div class="image">
-        <img src="{{asset "images/my_photo.png"}}" class="my-photo" alt="Daniele Castiglia" />
-        <img src="{{asset "images/green_vector.svg"}}" class="vector vector-green" alt="" />
-        <img src="{{asset "images/red_vector.svg"}}" class="vector vector-red" alt="" />
+<section class="presentation text-center">
+    <div class="relative flex items-center justify-center mb-4">
+        <img src="{{asset "images/my_photo.png"}}" class="h-myPhoto w-myPhoto" alt="Daniele Castiglia" />
+        <img src="{{asset "images/green_vector.svg"}}" class="absolute" alt="" />
+        <img src="{{asset "images/red_vector.svg"}}" class="absolute" alt="" />
     </div>
-    <h1>Daniele Castiglia</h1>
-    <h2>Fullstack Developer</h2>
-    <a download href="{{asset "file/cv_castiglia_daniele.pdf"}}" class="cta align-center"><span>Scarica il mio CV</span></a>
+    <h1 class="text-3xl mb-1"><strong>Daniele Castiglia</strong></h1>
+    <h2 class="mb-6 opacity-80">Fullstack Developer</h2>
+    <a download href="{{asset "file/cv_castiglia_daniele.pdf"}}" class="bg-primary-default rounded-full px-5 py-3 uppercase w-cta h-cta flex items-center justify-center mx-auto font-semibold text-sm leading-4 text-white"><span>Scarica il mio CV</span></a>
 </section>

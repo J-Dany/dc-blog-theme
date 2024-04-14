@@ -1,27 +1,23 @@
-<footer>
-    <div class="socials">
-        <a target="_blank" href="https://www.github.com/J-Dany"><i class="bi bi-github"></i></a>
-        <a target="_blank" href="https://www.instagram.com/ilcastiglia"><i class="bi bi-instagram"></i></a>
-        <a target="_blank" href="https://it.linkedin.com/in/daniele-castiglia-867870205"><i class="bi bi-linkedin"></i></a>
+<footer class="my-10 px-4">
+    {{> "partials/socials" justify=true mb="mb-7"}}
+    <div class="info mb-7 text-center">
+        <a href="mailto:castiglia.daniele@outlook.com" class="block">castiglia.daniele@outlook.com</a>
+        <a href="tel:3383914342" class="block">+39 338 391 4342</a>
     </div>
-    <div class="info">
-        <a href="mailto:castiglia.daniele@outlook.com">castiglia.daniele@outlook.com</a>
-        <a href="tel:3383914342">+39 338 391 4342</a>
+    <div class="mb-7 cf-and-copyright opacity-80">
+        <p class="text-center">Codice Fiscale: CSTDNL02E03F656A</p>
+        <p class="text-center">© 2024 Daniele Castiglia</p>
     </div>
-    <div class="cf-and-copyright">
-        <p>Codice Fiscale: CSTDNL02E03F656A</p>
-        <p>© 2024 Daniele Castiglia</p>
-    </div>
-    <hr />
-    <div class="legal">
+    <hr class="dark:opacity-50 mb-7 dark:border-t-gray-700 border-t-gray-200" />
+    <div class="legal mb-4 flex items-center justify-center gap-4">
         {{#get "pages" filter="slug:privacy-policy" as |privacyPolicy|}}
             {{#if privacyPolicy}}
-                <a href="{{privacyPolicy.[0].url}}">Privacy</a>
+                <a href="{{privacyPolicy.[0].url}}" class="text-secondary-default">Privacy</a>
             {{/if}}
         {{/get}}
         {{#get "pages" filter="slug:cookie-policy" as |cookiePolicy|}}
             {{#if cookiePolicy}}
-                <a href="{{cookiePolicy.[0].url}}">Cookie</a>
+                <a href="{{cookiePolicy.[0].url}}" class="text-secondary-default">Cookie</a>
             {{/if}}
         {{/get}}
     </div>

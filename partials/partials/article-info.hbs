@@ -1,17 +1,17 @@
-<div class="article-info">
-    <div class="date">
+<div class="article-info text-sm flex items-center gap-2 mb-2">
+    <div class="date flex items-center opacity-65 gap-2">
         <i class="bi bi-calendar"></i>
         <p>{{date format="DD MMM YYYY"}}</p>
     </div>
-    <i class="bi bi-dot"></i>
-    <div class="reading-time">
+    <i class="bi bi-dot opacity-65"></i>
+    <div class="reading-time flex items-center opacity-65 gap-2">
         <i class="bi bi-clock"></i>
         <p>{{reading_time minute="1 minuto" minutes="% minuti"}}</p>
     </div>
     <div class="flex-grow"></div>
-    <div class="tags">
+    <div class="tags flex gap-2">
         {{#foreach tags visibility="public"}}
-            <div class="tag"><span>{{name}}</span></div>
+            <div class="tag rounded relative font-medium text-xs leading-6 bg-tag text-tag p-tag"><span>{{name}}</span></div>
         {{/foreach}}
     </div>
 </div>

@@ -1,0 +1,10 @@
+<ul>
+    {{#foreach navigation}}
+        <li class="py-1 nav-{{slug}}{{#if current}} nav-current{{/if}}">
+            {{#if current}}
+                <i class="bi bi-chevron-right text-primary-default"></i>
+            {{/if}}
+            <a href="{{url absolute=" true"}}">{{label}}</a>
+        </li>
+    {{/foreach}}
+</ul>

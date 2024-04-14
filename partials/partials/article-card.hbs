@@ -1,15 +1,15 @@
-<div class="card">
-    <a href="{{url}}" class="image">
+<div class="card mb-6">
+    <a href="{{url}}" class="block relative aspect-1610 mb-3">
         <img loading="lazy" src="{{img_url feature_image size=" xl"}}"
             alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
             srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
             feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
-            sizes="(min-width: 1400px) 1400px, 92vw" />
-        <div class="go-to">
-            <i class="bi bi-arrow-up-short"></i>
+            sizes="(min-width: 1400px) 1400px, 92vw" class="rounded-cardImage aspect-1610" />
+        <div class="go-to rounded-goto flex items-center justify-center opacity-90 w-goto h-goto bg-goto absolute right-3 bottom-2">
+            <i class="bi bi-arrow-up-right"></i>
         </div>
     </a>
     {{> "partials/article-info"}}
-    <h4><a href="{{url}}">{{title}}</a></h4>
-    <p>{{excerpt words="30"}}</p>
+    <h4 class="text-lg font-medium"><a href="{{url}}">{{title}}</a></h4>
+    <p class="opacity-80">{{excerpt words="30"}}</p>
 </div>

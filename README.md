@@ -1,3 +1,7 @@
+# Setup
+
+- Creare una pagina con slug `projects`
+
 # Utils
 
 ## Codice all'interno di un post
