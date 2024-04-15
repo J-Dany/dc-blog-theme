@@ -1,21 +1,23 @@
 {{!< layout}}
 
-<progress class="reading-progress" value="0" max="100" aria-label="Reading progress"></progress>
+<progress class="reading-progress fixed top-0 left-0 w-full h-progress z-20 [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-primary-default [&::-moz-progress-bar]:bg-primary-default" value="0" max="100" aria-label="Reading progress"></progress>
 
 {{#post}}
+    {{!-- HACK: prevent tailwind from strip out custom style classes --}}
+    {{!-- <span class="hljs-ln-numbers hljs-ln-code"></span> --}}
     <article class="post">
         {{#if feature_image}}
-            <div class="image">
+            <div class="image mb-3">
                 <img srcset="{{img_url feature_image size=" s"}} 300w, {{img_url feature_image size="m" }} 600w, {{img_url
                     feature_image size="l" }} 1000w, {{img_url feature_image size="xl" }} 2000w"
                     sizes="(min-width: 1400px) 1400px, 92vw" src="{{img_url feature_image size=" xl"}}"
                     alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" class="{{#has tag="
-                    #contain-image"}}img-contain{{/has}}" />
+                    #contain-image"}}img-contain{{/has}} rounded-cardImage aspect-1610" />
             </div>
         {{/if}}
         {{> "partials/article-info" }}
-        <div id="article-content" class="content">
-            <h1>{{title}}</h1>
+        <div id="article-content" class="content dc-article">
+            <h1 class="text-3xl font-semibold leading-10">{{title}}</h1>
             {{{content}}}
         </div>
         {{#if comments}}

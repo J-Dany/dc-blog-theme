@@ -1,5 +1,6 @@
 import defaultTheme from "tailwindcss/defaultTheme";
 import { sky, yellow, green, gray } from "tailwindcss/colors";
+import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
@@ -16,7 +17,7 @@ const config = {
         left: "left",
       },
       padding: {
-        tag: "0px 10px"
+        tag: "0px 10px",
       },
       textColor: {
         tag: "#2676ff",
@@ -24,11 +25,13 @@ const config = {
       borderRadius: {
         goto: "20px",
         cardImage: "20px",
-        toggleMode: "20px"
+        toggleMode: "20px",
+        "20px": "20px",
       },
       backgroundColor: {
         goto: "rgba(0, 0, 0, 0.5)",
         tag: "rgba(38, 118, 255, 0.17)",
+        "code-inline": "#64646433",
       },
       aspectRatio: {
         169: "16 / 9",
@@ -86,7 +89,19 @@ const config = {
           900: "hsl(8, 63%, 12%)",
         },
       },
+      fontWeight: {
+        "content": "400",
+        "content-h2": "600",
+        "content-h3": "600",
+        "content-h4": "600",
+      },
       fontSize: {
+        "content-figcaption": "12px",
+        "content": "15px",
+        "content-h1": "30px",
+        "content-h2": "24px",
+        "content-h3": "20px",
+        "content-h4": "16px",
         "title-xxl": ["44px", "55px"],
         "title-xxl2": ["42px", "58px"],
         "title-xl": ["36px", "45px"],
@@ -113,6 +128,7 @@ const config = {
         goto: "60px",
         toggleMode: "30px",
         activeMode: "30px",
+        progress: "3px",
       },
     },
     translate: {
@@ -132,7 +148,163 @@ const config = {
       4: "0px 1px 5px rgba(0, 0, 0, 0.2)",
     },
   },
-  plugins: [],
+  plugins: [
+    plugin.withOptions(
+      ({ className = "dc-article", target = "modern" } = {}) => {
+        return ({ addComponents, theme }) => {
+          const makeImage = {
+            "height": "auto",
+            "max-width": "100%",
+            "border-radius": "20px",
+            "aspect-ratio": theme("aspectRatio.169"),
+          };
+
+          const codeStyle = {
+            padding: "2px 4px",
+            "border-radius": "4px",
+            "background-color": theme("backgroundColor.code-inline"),
+          };
+          
+          const titleAnchor = {
+            "scroll-margin-top": "64px",
+            "&::after": {
+              content: "'#'",
+              transition: "opacity 200ms ease, margin-left 200ms ease-out",
+              "margin-left": "6px",
+              opacity: 0,
+            },
+            "&:hover": {
+              cursor: "pointer",
+              "&::after": {
+                opacity: 0.4,
+                "margin-left": "12px",
+              },
+            },
+          };
+
+          addComponents({
+            [`.${className}`]: {
+              "font-size": theme("fontSize.content"),
+              "font-weight": theme("fontWeight.content"),
+              "line-height": "24px",
+              "& > hr": {
+                margin: "20px 0px",
+              },
+              code: {
+                "scrollbar-width": "none",
+                "-ms-overflow-style": "none",
+                "font-family": "monospace",
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+              },
+              figcaption: {
+                "font-size": theme("fontSize.figcaption"),
+                "line-height": "18px",
+                "margin-top": "6px",
+                "opacity": 0.7,
+              },
+              "& > h2": {
+                "font-size": theme("fontSize.content-h2"),
+                "font-weight": theme("fontWeight.content-h2"),
+                "line-height": "39px",
+                ...titleAnchor,
+                "& > code": codeStyle,
+              },
+              "& > h3": {
+                "font-size": theme("fontSize.content-h3"),
+                "font-weight": theme("fontWeight.content-h3"),
+                "line-height": "23.4px",
+                ...titleAnchor,
+                "& > code": codeStyle,
+              },
+              "& > h3": {
+                "font-size": theme("fontSize.content-h3"),
+                "font-weight": theme("fontWeight.content-h3"),
+                "line-height": "23.4px",
+                ...titleAnchor,
+                "& > code": codeStyle,
+              },
+              "& > h4": {
+                "font-size": theme("fontSize.content-h4"),
+                "font-weight": theme("fontWeight.content-h4"),
+                "line-height": "100%",
+                ...titleAnchor,
+                "& > code": codeStyle,
+              },
+              "& > p": {
+                margin: "20px 0px",
+                "& > a": {
+                  "word-break": "break-word",
+                  "word-wrap": "break-word",
+                  "&.has-sup": {
+                    "text-decoration": "none",
+                    "&:hover": {
+                      color: "inherit",
+                      "& > sup": {
+                        color: theme("colors.secondary.default"),
+                        "font-family": "monospace",
+                      },
+                    },
+                  },
+                },
+                "& > code": {
+                  ...codeStyle,
+                },
+              },
+              "& > .kg-image-card": {
+                "max-width": "100%",
+                "& > img": {
+                  ...makeImage,
+                }
+              },
+              "& > img": {
+                margin: "24px 0px",
+                ...makeImage,
+              },
+              "& > pre": {
+                "margin": "24px 0px",
+                "white-space": "pre-wrap",
+                "&.hljs-copy-wrapper": {
+                  "white-space": "pre",
+                },
+                "& > .hljs-copy-button": {
+                  "top": "calc(2rem / 3.5) !important",
+                  "&:hover": {
+                    "cursor": "pointer",
+                  },
+                },
+                "& > code": {
+                  "border-radius": theme("borderRadius.20px"),
+                  ".hljs-ln-numbers": {
+                    "user-select": "none",
+                    "pointer-events": "none",
+                    "-webkit-touch-callout": "none",
+                    "-khtml-user-select": "none",
+                    "-moz-user-select": "none",
+                    "-ms-user-select": "none",
+                    "text-align": "center",
+                    "color": "#ccc",
+                    "opacity": 0.7,
+                    "border-right": "1px solid #cccccc33",
+                    "vertical-align": "top",
+                    "padding-right": "5px",
+                  },
+                  ".hlhs-ln-line": {
+                    "line-height": "1.3",
+                  },
+                  ".hljs-ln-code": {
+                    "padding-left": "10px",
+                    "padding-right": "90px",
+                  },
+                },
+              },
+            },
+          });
+        };
+      }
+    ),
+  ],
 };
 
 export default config;

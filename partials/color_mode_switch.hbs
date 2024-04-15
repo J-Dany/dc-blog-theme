@@ -1,16 +1,18 @@
 <div class="color-mode-switch flex">
-    <div class="toggle dark:bg-gray-700 bg-gray-400 relative flex items-center w-toggleMode h-toggleMode rounded-toggleMode">
-        <div class="active-circle dark:bg-gray-500 bg-gray-300 transition-left absolute rounded-full top-0 left-0 h-activeMode w-activeMode"></div>
+    <div class="toggle dark:bg-gray-700 bg-gray-300 relative flex items-center w-toggleMode h-toggleMode rounded-toggleMode">
+        <div class="active-circle bg-primary-500 transition-left absolute rounded-full top-0 left-0 h-activeMode w-activeMode"></div>
         <div class="dark-mode z-10 shrink-0 w-mode text-center hover:cursor-pointer" style="padding-left: 1px;">
-            <i class="bi bi-moon"></i>
+            <i class="bi bi-moon text-gray-700 dark:text-inherit"></i>
         </div>
         <div class="light-mode z-10 shrink-0 w-mode text-center hover:cursor-pointer" style="padding-left: 1px;">
-            <i class="bi bi-emoji-sunglasses"></i>
+            <i class="bi bi-emoji-sunglasses text-gray-200 dark:text-inherit"></i>
         </div>
     </div>
 </div>
 
-<script>
+<script type="module">
+    import reflow from "{{asset "js/reflow.js"}}";
+
     const activeCircle = document.querySelector('.active-circle');
     const toggle = document.querySelector('.toggle');
     const theme = localStorage.getItem('theme');
@@ -23,7 +25,7 @@
     } else {
         activeCircle.style.left = '30px';
     }
-    (() => activeCircle.scrollTop)();
+    reflow(activeCircle);
     activeCircle.style.transition = prevValue;
 
     toggle.addEventListener('click', () => {
