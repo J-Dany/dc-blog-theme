@@ -1,7 +1,7 @@
-<section class="mt-7 about-me p-5 shadow-card3 rounded-lg dark:bg-gray-800">
-    <h3 class="text-xl font-medium">Su di me</h3>
+<section class="mt-7 about-me p-5 shadow-card3 rounded-lg dark:bg-zinc-800 {{this.additionalClasses}}">
+    <h3 class="text-xl font-medium mb-2">Su di me</h3>
     {{#get "posts" slug="about-me" as |post|}}
-        <div class="opacity-80">
+        <div class="opacity-80 leading-6 little-article">
             {{#post}}
                 {{{content}}}
             {{/post}}

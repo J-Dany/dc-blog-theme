@@ -16,13 +16,13 @@
     <meta name="HandheldFriendly" content="True" />
     {{ghost_head}}
   </head>
-  <body class="font-montserrat text-content dark:bg-gray-900 dark:text-gray-100 bg-gray-200 text-gray-700">
+  <body class="font-montserrat text-content dark:bg-zinc-900 dark:text-zinc-100 bg-zinc-200 text-zinc-700">
     {{> "first-body-scripts"}}
     {{> "header"}}
-    <main class="px-4">
+    <main>
       {{{ body }}}
       {{^is "post"}}
-        <a href="https://wa.me/+393383914342" class="z-1 fixed rounded-full border-none right-5 bottom-5 p-4 bg-whatsapp drop-shadow-2">
+        <a href="https://wa.me/+393383914342" class="z-1 fixed rounded-full border-none right-5 bottom-5 p-4 bg-whatsapp drop-shadow-2" style="z-index: 2;">
           <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-whatsapp h-6"
             viewBox="0 0 16 16">
             <path

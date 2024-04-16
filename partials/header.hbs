@@ -1,12 +1,18 @@
-<header class="mb-8 flex items-center px-3 py-3 dark:bg-gray-800 bg-gray-200 sticky top-0 z-10 shadow-card4">
+<header class="mb-8 lg:mb-10 flex items-center px-3 py-3 lg:py-5 lg:px-5 dark:bg-zinc-800 bg-zinc-200 sticky top-0 z-10 shadow-card4">
     <div class="flex items-center gap-3 flex-grow">
-        <button id="menu-toggle">
+        <button id="menu-toggle" class="lg:hidden">
             <i class="bi bi-list text-2xl"></i>
         </button>
-        <p class="m-0"><strong>Daniele Castiglia</strong></p>
+        <div class="m-0 lg:text-2xl lg:mr-10 lg:flex lg:items-center">
+            <img src="{{ asset "images/favicon.png" }}" class="h-8 mr-3 hidden lg:block" />
+            <a href="{{ @site.url }}" style="text-decoration"><strong>Daniele Castiglia</strong></a>
+        </div>
+        <div class="hidden lg:block">
+            {{navigation}}
+        </div>
     </div>
     {{> "color_mode_switch"}}
-    <div id="navigation" class="flex flex-col items-start z-50 duration-500 dark:bg-gray-800 bg-gray-300 translate-x-backAll fixed left-0 top-0 h-screen w-sidebar p-5">
+    <div id="navigation" class="lg:hidden flex flex-col items-start z-50 duration-500 dark:bg-zinc-800 bg-zinc-300 translate-x-backAll fixed left-0 top-0 h-screen w-sidebar p-5">
         <button id="close-sidebar">
             <i class="bi bi-x text-2xl opacity-60" style="margin-left: -6px;"></i>
         </button>
@@ -18,9 +24,11 @@
             <p class="text-center text-sm opacity-60">Copyright&copy; Daniele Castiglia</p>
         </div>
     </div>
-    <div class="z-20 hidden fixed top-0 left-0 duration-500 backdrop h-screen w-screen bg-gray-900 transition-opacity opacity-0"></div>
+    <div class="z-20 hidden fixed top-0 left-0 duration-500 backdrop h-screen w-screen bg-zinc-900 transition-opacity opacity-0"></div>
 </header>
-<script>
+<script type="module">
+    import reflow from "{{ asset "js/reflow.js" }}";
+
     let menuOpen = false;
     const menuToggle = document.getElementById("menu-toggle");
     const aside = document.querySelector("header #navigation");
@@ -32,14 +40,14 @@
 
     menuToggle.addEventListener("click", () => {
         aside.style.height = `${window.innerHeight}px`;
-        (() => aside.scrollTop)();
+        reflow(aside);
         menuOpen = !menuOpen;
         aside.classList.add("translate-x-initial");
         aside.classList.remove("translate-x-backAll");
         document.body.classList.toggle("overflow-hidden");
 
         backdrop.classList.remove("hidden");
-        (() => backdrop.scrollTop)(); // Force reflow
+        reflow(backdrop);
         backdrop.classList.remove("opacity-0");
         backdrop.classList.add("opacity-80");
 
@@ -56,7 +64,7 @@
         backdrop.addEventListener("transitionend", () => {
             backdrop.classList.add("hidden");
             aside.style.height = null;
-            (() => aside.scrollTop)();
+            reflow(aside);
         }, { once: true });
 
         backdrop.classList.remove("opacity-80");

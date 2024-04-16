@@ -1,24 +1,36 @@
-<footer class="my-10 px-4">
-    {{> "partials/socials" justify=true mb="mb-7"}}
-    <div class="info mb-7 text-center">
-        <a href="mailto:castiglia.daniele@outlook.com" class="block">castiglia.daniele@outlook.com</a>
-        <a href="tel:3383914342" class="block">+39 338 391 4342</a>
+<footer class="mt-12 px-4 py-16 lg:grid lg:grid-cols-4 lg:px-8 lg:gap-10 dark:bg-zinc-800 bg-zinc-300">
+    <div class="col-0 hidden lg:block lg:text-left">
+        <p class="mb-2 text-2xl">Daniele Castiglia</p>
+        <p class="mb-3 text-sm opacity-80">Fullstack Developer</p>
+        <img src="{{ asset "images/favicon.png" }}" alt="Daniele Castiglia" class="h-16" />
     </div>
-    <div class="mb-7 cf-and-copyright opacity-80">
-        <p class="text-center">Codice Fiscale: CSTDNL02E03F656A</p>
-        <p class="text-center">© 2024 Daniele Castiglia</p>
+    <div class="col-1 hidden lg:block">
+
     </div>
-    <hr class="dark:opacity-50 mb-7 dark:border-t-gray-700 border-t-gray-200" />
-    <div class="legal mb-4 flex items-center justify-center gap-4">
-        {{#get "pages" filter="slug:privacy-policy" as |privacyPolicy|}}
+    <div class="col-2">
+        {{> "partials/socials" justify=true mb="mb-7 lg:justify-start"}}
+        <div class="info mb-7 text-center lg:text-left">
+            <a href="mailto:castiglia.daniele@outlook.com" class="block">castiglia.daniele@outlook.com</a>
+            <a href="tel:3383914342" class="block">+39 338 391 4342</a>
+        </div>
+    </div>
+    <hr class="lg:hidden dark:opacity-50 mb-7 dark:border-t-zinc-700 border-t-zinc-200 -z-0" />
+    <div class="col-3">
+        <div class="mb-7 cf-and-copyright opacity-80">
+            <p class="text-center lg:text-left">Codice Fiscale: CSTDNL02E03F656A</p>
+            <p class="text-center lg:text-left">© 2024 Daniele Castiglia</p>
+        </div>
+        <div class="legal mb-4 flex items-center justify-center lg:justify-start gap-4">
+            {{#get "pages" filter="slug:privacy-policy" as |privacyPolicy|}}
             {{#if privacyPolicy}}
-                <a href="{{privacyPolicy.[0].url}}" class="text-secondary-default">Privacy</a>
+            <a href="{{privacyPolicy.[0].url}}" class="text-secondary-default">Privacy</a>
             {{/if}}
-        {{/get}}
-        {{#get "pages" filter="slug:cookie-policy" as |cookiePolicy|}}
+            {{/get}}
+            {{#get "pages" filter="slug:cookie-policy" as |cookiePolicy|}}
             {{#if cookiePolicy}}
-                <a href="{{cookiePolicy.[0].url}}" class="text-secondary-default">Cookie</a>
+            <a href="{{cookiePolicy.[0].url}}" class="text-secondary-default">Cookie</a>
             {{/if}}
-        {{/get}}
+            {{/get}}
+        </div>
     </div>
 </footer>

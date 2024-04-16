@@ -1,5 +1,5 @@
 import defaultTheme from "tailwindcss/defaultTheme";
-import { sky, yellow, green, gray } from "tailwindcss/colors";
+import { sky, yellow, green, zinc } from "tailwindcss/colors";
 import plugin from "tailwindcss/plugin";
 
 /** @type {import('tailwindcss').Config} */
@@ -18,6 +18,7 @@ const config = {
       },
       padding: {
         tag: "0px 10px",
+        "64px": "64px",
       },
       textColor: {
         tag: "#2676ff",
@@ -48,7 +49,7 @@ const config = {
       },
       colors: {
         whatsapp: "#25d366",
-        gray: gray,
+        zinc: zinc,
         info: sky,
         warning: yellow,
         success: green,
@@ -90,14 +91,14 @@ const config = {
         },
       },
       fontWeight: {
-        "content": "400",
+        content: "400",
         "content-h2": "600",
         "content-h3": "600",
         "content-h4": "600",
       },
       fontSize: {
         "content-figcaption": "12px",
-        "content": "15px",
+        content: "15px",
         "content-h1": "30px",
         "content-h2": "24px",
         "content-h3": "20px",
@@ -121,6 +122,8 @@ const config = {
         activeMode: "30px",
         mode: "30px",
         sidebar: "280px",
+        "latest-article-left": "calc(50% - 64px)",
+        "latest-article-right": "100%",
       },
       height: {
         myPhoto: "173px",
@@ -129,6 +132,7 @@ const config = {
         toggleMode: "30px",
         activeMode: "30px",
         progress: "3px",
+        "presentation-block": "calc(100vh - 109px - 2.5rem)",
       },
     },
     translate: {
@@ -150,10 +154,40 @@ const config = {
   },
   plugins: [
     plugin.withOptions(
+      ({ className = "little-article", target = "modern" } = {}) => {
+        return ({ addComponents, theme }) => {
+          addComponents({
+            [`.${className}`]: {
+              strong: {
+                color: theme("colors.secondary.default"),
+              },
+            },
+          });
+        };
+      }
+    ),
+    plugin(({ addUtilities, theme }) => {
+      addUtilities({
+        ".active-page": {
+          position: "relative",
+          "&::before": {
+            content: "''",
+            position: "absolute",
+            bottom: "-4px",
+            left: "0.5px",
+            width: "100%",
+            height: "3px",
+            "background-color": theme("colors.primary.default"),
+            "border-radius": "2px",
+          },
+        },
+      });
+    }),
+    plugin.withOptions(
       ({ className = "dc-article", target = "modern" } = {}) => {
         return ({ addComponents, theme }) => {
           const makeImage = {
-            "height": "auto",
+            height: "auto",
             "max-width": "100%",
             "border-radius": "20px",
             "aspect-ratio": theme("aspectRatio.169"),
@@ -164,7 +198,7 @@ const config = {
             "border-radius": "4px",
             "background-color": theme("backgroundColor.code-inline"),
           };
-          
+
           const titleAnchor = {
             "scroll-margin-top": "64px",
             "&::after": {
@@ -187,6 +221,9 @@ const config = {
               "font-size": theme("fontSize.content"),
               "font-weight": theme("fontWeight.content"),
               "line-height": "24px",
+              strong: {
+                color: theme("colors.secondary.default"),
+              },
               "& > hr": {
                 margin: "20px 0px",
               },
@@ -198,11 +235,17 @@ const config = {
                   display: "none",
                 },
               },
+              "& > figure:not(.kg-card)": {
+                "aspect-ratio": theme("aspectRatio.169"),
+                "& > img": {
+                  ...makeImage,
+                },
+              },
               figcaption: {
                 "font-size": theme("fontSize.figcaption"),
                 "line-height": "18px",
                 "margin-top": "6px",
-                "opacity": 0.7,
+                opacity: 0.7,
               },
               "& > h2": {
                 "font-size": theme("fontSize.content-h2"),
@@ -232,6 +275,18 @@ const config = {
                 ...titleAnchor,
                 "& > code": codeStyle,
               },
+              "& > ol, & > ul": {
+                "& > li": {
+                  padding: "40px 0px",
+                  "line-height": "1.5",
+                  code: {
+                    ...codeStyle,
+                  },
+                  "&:last-child, &:last-of-type": {
+                    "padding-bottom": 0,
+                  },
+                },
+              },
               "& > p": {
                 margin: "20px 0px",
                 "& > a": {
@@ -256,22 +311,22 @@ const config = {
                 "max-width": "100%",
                 "& > img": {
                   ...makeImage,
-                }
+                },
               },
               "& > img": {
                 margin: "24px 0px",
                 ...makeImage,
               },
               "& > pre": {
-                "margin": "24px 0px",
+                margin: "24px 0px",
                 "white-space": "pre-wrap",
                 "&.hljs-copy-wrapper": {
                   "white-space": "pre",
                 },
                 "& > .hljs-copy-button": {
-                  "top": "calc(2rem / 3.5) !important",
+                  top: "calc(2rem / 3.5) !important",
                   "&:hover": {
-                    "cursor": "pointer",
+                    cursor: "pointer",
                   },
                 },
                 "& > code": {
@@ -284,8 +339,8 @@ const config = {
                     "-moz-user-select": "none",
                     "-ms-user-select": "none",
                     "text-align": "center",
-                    "color": "#ccc",
-                    "opacity": 0.7,
+                    color: "#ccc",
+                    opacity: 0.7,
                     "border-right": "1px solid #cccccc33",
                     "vertical-align": "top",
                     "padding-right": "5px",
