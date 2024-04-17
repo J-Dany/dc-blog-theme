@@ -181,6 +181,13 @@ const config = {
             "border-radius": "2px",
           },
         },
+        ".hide-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            "display": "none",
+          }
+        }
       });
     }),
     plugin.withOptions(
