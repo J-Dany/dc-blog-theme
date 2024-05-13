@@ -2,10 +2,10 @@
     const progressBar = document.querySelector('.reading-progress');
 
     function updateProgress() {
-        const totalHeight = document.body.clientHeight;
+        const totalHeight = document.querySelector('article').clientHeight;
         const windowHeight = document.documentElement.clientHeight;
         const position = window.scrollY;
-        const progress = position / (totalHeight - windowHeight) * 100;
+        const progress = Math.abs(position / (totalHeight - windowHeight) * 100);
         progressBar.setAttribute('value', progress);
         requestAnimationFrame(updateProgress);
     }
@@ -22,7 +22,7 @@
     });
 </script>
 <script type="module">
-    import slugify from "/assets/js/slugify.js";
+    import slugify from "{{asset "js/slugify.js"}}";
 
     const allH4 = document.querySelectorAll('#article-content h4');
     allH4.forEach((h4) => {
